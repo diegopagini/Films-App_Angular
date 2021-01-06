@@ -6,7 +6,7 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
 
 @NgModule({
   declarations: [NavbarComponent, SlideshowComponent],
-  imports: [CommonModule, RouterModule, SlideshowComponent],
+  imports: [CommonModule, RouterModule],
   exports: [NavbarComponent, SlideshowComponent],
 })
 export class ComponentsModule {}
