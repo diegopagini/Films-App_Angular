@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-poster-grid.component';
 import { RatingModule } from 'ng-starrating';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,12 @@ import { RatingModule } from 'ng-starrating';
     SlideshowComponent,
     PeliculasPosterGridComponent,
   ],
-  imports: [CommonModule, RouterModule, RatingModule],
-  exports: [NavbarComponent, SlideshowComponent, PeliculasPosterGridComponent],
+  imports: [CommonModule, RouterModule, RatingModule, PipesModule],
+  exports: [
+    NavbarComponent,
+    SlideshowComponent,
+    PeliculasPosterGridComponent,
+    PipesModule,
+  ],
 })
 export class ComponentsModule {}

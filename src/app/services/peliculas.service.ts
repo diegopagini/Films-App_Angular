@@ -7,12 +7,15 @@ import { tap, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PeliculasService {
+  // tslint:disable-next-line: no-inferrable-types
   private baseUrl: string = 'https://api.themoviedb.org/3';
   private carteleraPage = 1;
+  // tslint:disable-next-line: no-inferrable-types
   public cargando: boolean = false;
 
   constructor(private http: HttpClient) {}
 
+  // tslint:disable-next-line: typedef
   get params() {
     return {
       api_key: 'b66ac5ebbf6d1157fd7f203a0224b424',
