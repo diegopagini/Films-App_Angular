@@ -23,7 +23,7 @@
         {{ pelicula.vote_average | number: "1.1-2" }}
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
       <div class="col text-white">
         {{ pelicula.overview }}
       </div>
@@ -35,5 +35,11 @@
         </button>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row mt-5" *ngIf="cast.length > 0">
+  <div class="col">
+    <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
   </div>
 </div>

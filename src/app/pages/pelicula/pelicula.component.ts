@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Cast } from 'src/app/interfaces/movie-cast';
 import { MovieResponse } from 'src/app/interfaces/movie-response';
 import { PeliculasService } from 'src/app/services/peliculas.service';
 
@@ -11,11 +12,13 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
 })
 export class PeliculaComponent implements OnInit {
   pelicula: MovieResponse;
+  cast: Cast[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private peliculasService: PeliculasService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -23,8 +26,17 @@ export class PeliculaComponent implements OnInit {
     //con desestructuracion:
     // const {id} = this.activatedRoute.snapshot.params;
     this.peliculasService.getPeliculaDetalle(id).subscribe((movie) => {
+      if (!movie) {
+        this.router.navigateByUrl('/home');
+        return;
+      }
       // console.log(movie);||
       this.pelicula = movie;
+    });
+
+    this.peliculasService.getCast(id).subscribe((cast) => {
+      // console.log(cast);
+      this.cast = cast.filter((actor) => actor.profile_path !== null);
     });
   }
 
