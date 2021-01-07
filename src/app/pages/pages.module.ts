@@ -4,10 +4,11 @@ import { HomeComponent } from './home/home.component';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { BuscarComponent } from './buscar/buscar.component';
 import { ComponentsModule } from '../components/components.module';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [HomeComponent, PeliculaComponent, BuscarComponent],
-  imports: [CommonModule, ComponentsModule],
+  imports: [CommonModule, ComponentsModule, RatingModule],
   exports: [ComponentsModule],
 })
 export class PagesModule {}
