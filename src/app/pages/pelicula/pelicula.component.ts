@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Cast } from 'src/app/interfaces/movie-cast';
 import { MovieResponse } from 'src/app/interfaces/movie-response';
 import { PeliculasService } from 'src/app/services/peliculas.service';
+import { combineLatest } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pelicula',
@@ -23,8 +24,15 @@ export class PeliculaComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
+
+    // combineLatest([
+    //   this.peliculasService.getPeliculaDetalle(id),
+    //   this.peliculasService.getCast(id)
+    // ]).subscribe((objeto) => console.log(objeto));
+
     //con desestructuracion:
     // const {id} = this.activatedRoute.snapshot.params;
+
     this.peliculasService.getPeliculaDetalle(id).subscribe((movie) => {
       if (!movie) {
         this.router.navigateByUrl('/home');
